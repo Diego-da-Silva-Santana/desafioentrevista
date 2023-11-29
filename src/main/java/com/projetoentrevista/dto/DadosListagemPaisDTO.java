@@ -9,10 +9,10 @@ public class DadosListagemPaisDTO {
 
     public DadosListagemPaisDTO() {
     }
-    public DadosListagemPaisDTO(Pais pais) {
-        nome = pais.getNome();
-        codigoInternacionalIso = pais.getCodigoInternacionalIso();
-    }
+//    public DadosListagemPaisDTO(Pais pais) {
+//        nome = pais.getNome();
+//        codigoInternacionalIso = pais.getCodigoInternacionalIso();
+//    }
     public DadosListagemPaisDTO(String nome, String codigoInternacionalIso) {
         this.nome = nome;
         this.codigoInternacionalIso = codigoInternacionalIso;

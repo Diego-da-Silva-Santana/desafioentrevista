@@ -24,10 +24,11 @@ public class PaisService {
 //    }
 
     public PaisDTO listarPais(String codigoInternacinalIso) {
-        Optional<Pais> pais = repository.findById(codigoInternacinalIso);
+        Optional<Pais> optionalPais = repository.findByIdCodigoInternacional(codigoInternacinalIso);
 
         //PaisDTO dto = new PaisDTO(pais.get());
-        return pais.orElseThrow(() -> new ResourceNotFoundException(codigoInternacinalIso)).toPaisDTO();
+       // return pais.orElseThrow(() -> new ResourceNotFoundException(codigoInternacinalIso)).toPaisDTO();
+       return optionalPais.orElseThrow(()-> new ResourceNotFoundException(codigoInternacinalIso)).toPaisDTO();
     }
 
     public List<DadosListagemPaisDTO> listagemPaises() {
@@ -36,5 +37,8 @@ public class PaisService {
         return pais.stream().map(Pais::toDadosListagemPaisDTO).collect(Collectors.toList());
     }
 
+    public Pais adicionarPais(Pais pais) {
 
+        return repository.save(pais);
+    }
 }
