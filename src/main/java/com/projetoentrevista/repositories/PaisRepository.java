@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface PaisRepository extends JpaRepository<Pais, String> {
 
-    Optional<Pais> findByIdCodigoInternacional(String codigoInternacionalIso);
+    Optional<Pais> findByCodigoInternacionalIso(String codigoInternacionalIso);
 }

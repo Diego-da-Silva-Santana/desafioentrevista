@@ -54,7 +54,7 @@ public class Pais {
     }
 
     public PaisDTO toPaisDTO(){
-        return new PaisDTO(nome,codigoInternacionalIso,continente, populacao,dataCriacao);
+        return new PaisDTO(id, nome, codigoInternacionalIso, continente, populacao, dataCriacao);
     }
 
     public DadosListagemPaisDTO toDadosListagemPaisDTO(){

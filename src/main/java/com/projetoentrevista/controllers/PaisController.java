@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/pais")
+@RequestMapping(value = "/paises")
 public class PaisController {
     @Autowired
     private PaisService service;
@@ -24,18 +24,17 @@ public class PaisController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DadosListagemPaisDTO>> listagemPais(){
+    public ResponseEntity<List<DadosListagemPaisDTO>> listagemPais() {
         List<DadosListagemPaisDTO> list = service.listagemPaises();
 
         return ResponseEntity.ok().body(list);
     }
 
     @PostMapping
-    public ResponseEntity<Pais> adicionarPais(@RequestBody Pais pais){
+    public ResponseEntity<Pais> adicionarPais(@RequestBody Pais pais) {
         pais = service.adicionarPais(pais);
 
         return ResponseEntity.ok().body(pais);
     }
-
 
 }
