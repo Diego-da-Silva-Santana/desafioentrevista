@@ -4,6 +4,7 @@ import com.projetoentrevista.dto.DadosListagemPaisDTO;
 import com.projetoentrevista.dto.PaisDTO;
 import com.projetoentrevista.entities.Pais;
 import com.projetoentrevista.services.PaisService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class PaisController {
     }
 
     @PostMapping
-    public ResponseEntity<PaisDTO> adicionarPais(@RequestBody Pais pais) {
+    public ResponseEntity<PaisDTO> adicionarPais(@Valid @RequestBody Pais pais) {
         PaisDTO paisDTO = service.adicionarPais(pais);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(pais.getId()).toUri();
         return ResponseEntity.created(uri).body(paisDTO);

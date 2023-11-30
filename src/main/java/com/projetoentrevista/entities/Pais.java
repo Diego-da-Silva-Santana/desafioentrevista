@@ -3,6 +3,10 @@ package com.projetoentrevista.entities;
 import com.projetoentrevista.dto.DadosListagemPaisDTO;
 import com.projetoentrevista.dto.PaisDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -10,13 +14,19 @@ import java.time.LocalDateTime;
 @Table(name = "tb_pais")
 public class Pais {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Nome obrigatório")
     private String nome;
+    @NotBlank(message = "Código internacional iso obrigátorio")
     private String codigoInternacionalIso;
+    @NotBlank(message = "Continente obrigatório")
     private String continente;
+    @NotNull(message = "População obrigatório")
+    @Min(value = 10001, message = "A população deve ser maior ou igual a 10001")
     private Double populacao;
+    @NotNull(message = " Data de criação obrigatório")
+    @CreationTimestamp
     private LocalDateTime dataCriacao;
 
     public Pais() {
