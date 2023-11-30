@@ -1,14 +1,25 @@
 package com.projetoentrevista.dto;
 
+import com.projetoentrevista.entities.Pais;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 public class PaisDTO {
 
     private Long id;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String codigoInternacionalIso;
+    @NotBlank
     private String continente;
+    @NotNull
+    @Min(10000)
     private Double populacao;
+    @NotNull
     private LocalDateTime dataCriacao;
 
     public PaisDTO() {
@@ -21,6 +32,14 @@ public class PaisDTO {
         this.continente = continente;
         this.populacao = populacao;
         this.dataCriacao = dataCriacao;
+    }
+    public  PaisDTO(Pais pais){
+        this.id = pais.getId();
+        this.nome = pais.getNome();
+        this.codigoInternacionalIso = pais.getCodigoInternacionalIso();
+        this.continente = pais.getContinente();
+        this.populacao = pais.getPopulacao();
+        this.dataCriacao = pais.getDataCriacao();
     }
 
     public PaisDTO(String nome, String codigoInternacionalIso, String continente, Double populacao, LocalDateTime dataCriacao) {

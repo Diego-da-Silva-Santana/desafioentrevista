@@ -5,6 +5,7 @@ import com.projetoentrevista.dto.PaisDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tb_pais")
 public class Pais {
@@ -15,18 +16,10 @@ public class Pais {
     private String nome;
     private String codigoInternacionalIso;
     private String continente;
-    private  Double populacao;
+    private Double populacao;
     private LocalDateTime dataCriacao;
 
     public Pais() {
-    }
-
-    public Pais(PaisDTO paisDTO) {
-        this.nome = paisDTO.getNome();
-        this.codigoInternacionalIso = paisDTO.getCodigoInternacionalIso();
-        this.continente = paisDTO.getContinente();
-        this.populacao = paisDTO.getPopulacao();
-        this.dataCriacao = paisDTO.getDataCriacao();
     }
 
     public Long getId() {
@@ -53,12 +46,12 @@ public class Pais {
         return dataCriacao;
     }
 
-    public PaisDTO toPaisDTO(){
+    public PaisDTO toPaisDTO() {
         return new PaisDTO(id, nome, codigoInternacionalIso, continente, populacao, dataCriacao);
     }
 
-    public DadosListagemPaisDTO toDadosListagemPaisDTO(){
-        return new DadosListagemPaisDTO(nome,codigoInternacionalIso);
+    public DadosListagemPaisDTO toDadosListagemPaisDTO() {
+        return new DadosListagemPaisDTO(nome, codigoInternacionalIso);
     }
 
 }

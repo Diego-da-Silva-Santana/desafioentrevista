@@ -1,8 +1,11 @@
 package com.projetoentrevista.dto;
 
-public class DadosListagemPaisDTO {
+import jakarta.validation.constraints.NotBlank;
 
+public class DadosListagemPaisDTO {
+    @NotBlank
     private String nome;
+    @NotBlank
     private String codigoInternacionalIso;
 
     public DadosListagemPaisDTO() {

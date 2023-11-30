@@ -6,6 +6,7 @@ import com.projetoentrevista.entities.Pais;
 import com.projetoentrevista.exceptions.ResourceNotFoundException;
 import com.projetoentrevista.repositories.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,8 +30,18 @@ public class PaisService {
         return pais.stream().map(Pais::toDadosListagemPaisDTO).collect(Collectors.toList());
     }
 
-    public Pais adicionarPais(Pais pais) {
+    public PaisDTO adicionarPais(Pais pais) {
+        Pais paisSalvo = repository.save(pais);
+        PaisDTO paisDTO = new PaisDTO(paisSalvo);
 
-        return repository.save(pais);
+        return paisDTO;
+    }
+
+    public void deletarpais(Long id) {
+        try {
+            repository.findById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.projetoentrevista.exceptions;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -10,8 +11,9 @@ public class RestExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Error> resourceNotFoundException(ResourceNotFoundException ex) {
 
-        Error error = new Error(ex.getMessage());
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        Error error = new Error(status.value(),ex.getMessage());
 
-        return ResponseEntity.status(404).body(error);
+        return ResponseEntity.status(status).body(error);
     }
 }
