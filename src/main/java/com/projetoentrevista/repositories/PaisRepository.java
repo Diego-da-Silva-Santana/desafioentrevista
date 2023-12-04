@@ -11,5 +11,5 @@ public interface PaisRepository extends JpaRepository<Pais, Long> {
 
     Optional<Pais> findByCodigoInternacionalIso(String codigoInternacionalIso);
 
-
+    boolean existsByCodigoInternacionalIso(String codigoInternacionalIso);
 }
